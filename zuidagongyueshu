@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+// 两个数
+int gcd(int a, int b) {
+    while (b != 0) {
+        int c = b;
+        b = a % b;
+        a = c;
+    }
+    return a;
+}
+
+// 两个
+int commonDivisor(int x1, int x2) {
+    return gcd(x1, x2);
+}
+
+// 三个
+int commonDivisor(int x1, int x2, int x3) {
+    return gcd(commonDivisor(x1, x2), x3);
+}
+
+// 四个
+int commonDivisor(int x1, int x2, int x3, int x4) {
+    return gcd(commonDivisor(x1, x2, x3), x4);
+}
+
+int main() {
+    int num1, num2, num3, num4;
+    cout << "请输入3个整数: ";
+    cin >> num1 >> num2 >> num3;
+
+    // 三个整数
+    int result = commonDivisor(num1, num2, num3);
+    cout << "整数" << num1 << "," << num2 << "," << num3 << " 的最大公约数为: " << result << endl;
+
+    // 四个整数
+    //
+    cout << "请输入4个整数: ";
+    cin >> num1 >> num2 >> num3 >> num4;
+    result = commonDivisor(num1, num2, num3, num4);
+    cout << "整数" << num1 << "," << num2 << "," << num3 << "," << num4 << " 的最大公约数为: " << result << endl;
+    //
+
+    return 0;
+}
