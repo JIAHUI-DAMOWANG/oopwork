@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+double calculateArea(string shapeType = "rectangle", double radius = 1.0) {
+    if (shapeType == "circle") {
+        return M_PI * radius * radius;
+    }
+    return 0.0; 
+}
+double calculateArea(string shapeType = "rectangle", double length = 2.0, double width = 2.0) {
+    if (shapeType == "rectangle") {
+        return length * width;
+    }
+    return 0.0;
+}
+double calculateArea(string shapeType = "rectangle", double side1 = 3.0, double side2 = 3.0, double side3 = 3.0) {
+    if (shapeType == "triangle") {
+        double s = (side1 + side2 + side3) / 2.0;
+        return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+    return 0.0; 
+}
+
+int main() {
+    int shapeType;
+    double param1, param2, param3;
+
+    cout << "请输入要计算的图形类型(1-圆形，2-矩形，3-三角形): ";
+    cin >> shapeType;
+
+    switch (shapeType) {
+    case 1: // 圆形
+        cout << "请输入圆的半径: ";
+        cin >> param1;
+        cout << "该图形为圆形，其面积为：" << calculateArea("circle", param1) << endl;
+        break;
+    case 2: // 矩形
+        cout << "请输入矩形的长和宽: ";
+        cin >> param1 >> param2;
+        cout << "该图形为矩形，其面积为：" << calculateArea("rectangle", param1, param2) << endl;
+        break;
+    case 3: // 三角形
+        cout << "请输入三角形的三条边长: ";
+        cin >> param1 >> param2 >> param3;
+        cout << "该图形为三角形，其面积为：" << calculateArea("triangle", param1, param2, param3) << endl;
+        break;
+    default:
+        cout << "无效。" << endl;
+        return 1;
+    }
+
+    return 0;
+}
